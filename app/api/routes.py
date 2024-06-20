@@ -32,6 +32,7 @@ def create_whiskey(current_user_token):
 @token_required
 def get_whiskey(current_user_token):
     a_user = current_user_token.token
+    print(f'We are attempting to get whiskey for this user {a_user}')
     whiskeys = Whiskey.query.filter_by(user_token = a_user).all()
     response = Whiskeys_schema.dump(whiskeys)
     return jsonify(response)
